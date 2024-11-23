@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dyoqbx0jyxeb"]
+
+[gd_scene load_steps=9 format=3 uid="uid://dyoqbx0jyxeb"]
+
 
 [ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_g8mcg"]
 [ext_resource type="Texture2D" uid="uid://b070ach5lj7rd" path="res://Assets/sky.jpg" id="1_gmhot"]
 [ext_resource type="PackedScene" uid="uid://ivtnyyctvcsl" path="res://Scenes/gnome.tscn" id="2_48ylr"]
+[ext_resource type="AudioStream" uid="uid://f74768dt55uh" path="res://audio/background_track.wav" id="2_afshw"]
 [ext_resource type="Texture2D" uid="uid://jgxd87s05qsm" path="res://Assets/ground.jpg" id="2_u82ji"]
 [ext_resource type="PackedScene" uid="uid://bcwdgoepfnx52" path="res://Scenes/plant.tscn" id="2_xn7s7"]
 [ext_resource type="PackedScene" uid="uid://bvheh4rb58pfh" path="res://Scenes/hose.tscn" id="5_edj1w"]
@@ -13,6 +16,7 @@
 script = ExtResource("1_g8mcg")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_afshw")
 
 [node name="Sky" type="Sprite2D" parent="."]
 modulate = Color(0.374427, 0.583672, 0.715534, 1)

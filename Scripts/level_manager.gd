@@ -14,7 +14,7 @@ func _ready() -> void:
 	update_score(score)
 	
 	for plant in $plants.get_children():
-		plant.on_plant_death.connect(plant_status_updated)
+		plant.on_plant_death.connect(plant_died)
 
 func update_score(amount):
 	score += amount
@@ -24,8 +24,8 @@ func _process(delta: float) -> void:
 	ui.get_node("TimeLeft").text = str(int(timer.time_left))
 	
 
-func plant_status_updated(status):
-	pass
+func plant_died(score):
+	update_score(score)
 
 func time_up():
 	print("TIME UP!")

@@ -9,8 +9,7 @@
 size = Vector2(26, 20)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q4i4b"]
-radius = 12.0
-height = 64.0
+radius = 14.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_11f5f"]
 animations = [{
@@ -50,10 +49,13 @@ position = Vector2(-13, 14)
 shape = SubResource("RectangleShape2D_3bcka")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 17.185)
 shape = SubResource("CapsuleShape2D_q4i4b")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1.36, -13.775)
-scale = Vector2(0.16, 0.16)
+z_index = 1
+position = Vector2(-1.93, -16.34)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_11f5f")
-animation = &"idle"
+animation = &"walk"
+frame_progress = 0.287324
