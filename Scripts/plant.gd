@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 		$ProgressBar.value = health
 		if health <= 0:
 			alive = false
-			emit_signal("on_plant_death", 10)
+			emit_signal("on_plant_death", -10)
 			print("signal sent, 10 score negated")
 
 func add_health(amount):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ivtnyyctvcsl"]
+[gd_scene load_steps=8 format=3 uid="uid://ivtnyyctvcsl"]
 
 [ext_resource type="Script" path="res://Scripts/gnome.gd" id="1_huuxy"]
 [ext_resource type="Texture2D" uid="uid://cjv1tsj0df6rt" path="res://Assets/gnome/gnome3.png" id="2_irbrp"]
