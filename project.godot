@@ -11,13 +11,24 @@ config_version=5
 [application]
 
 config/name="ArtsAndCrafts"
+config/description="Made for the Fall term GEMS game jam!"
+config/version="0.0.1"
+run/main_scene="res://Scenes/main_level.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [editor]
 
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
+
+[global_group]
+
+level_manager=""
 
 [input]
 
