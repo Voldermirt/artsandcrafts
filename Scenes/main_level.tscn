@@ -4,7 +4,7 @@
 
 [sub_resource type="SystemFont" id="SystemFont_7qaeo"]
 
-[node name="Node2D" type="Node2D"]
+[node name="MainLevel" type="Node2D" groups=["level_manager"]]
 script = ExtResource("1_g8mcg")
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
@@ -38,3 +38,5 @@ offset_bottom = 23.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 40
 text = "60"
+
+[connection signal="timeout" from="LevelTimer" to="." method="time_up"]

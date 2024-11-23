@@ -12,6 +12,9 @@ func _ready() -> void:
 	timer = $LevelTimer
 	timer.start()
 	update_score(score)
+	
+	for plant in get_tree().get_nodes_in_group("plants"):
+		plant.signal.connect(plant_status_updated)
 
 func update_score(amount):
 	score += amount
@@ -20,6 +23,9 @@ func update_score(amount):
 func _process(delta: float) -> void:
 	ui.get_node("TimeLeft").text = str(int(timer.time_left))
 	
+
+func plant_status_updated(status):
+	pass
 
 func time_up():
 	print("TIME UP!")
