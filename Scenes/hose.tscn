@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvheh4rb58pfh"]
+
+[ext_resource type="Texture2D" uid="uid://c002fnmxm3agh" path="res://icon.svg" id="1_epgon"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_deers"]
+particle_flag_disable_z = true
+angle_min = 38.8
+angle_max = 164.0
+direction = Vector3(10, 0, 0)
+initial_velocity_min = 4.14
+initial_velocity_max = 22.77
+angular_velocity_min = -98.39
+angular_velocity_max = -98.39
+gravity = Vector3(0, 98, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w6wjb"]
+size = Vector2(76, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f8rtm"]
+size = Vector2(75, 70)
+
+[node name="Hose" type="StaticBody2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(108, 3)
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_deers")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 32)
+shape = SubResource("RectangleShape2D_w6wjb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.0847423, 0.552358, 0.429908, 1)
+position = Vector2(-0.5, 0)
+scale = Vector2(0.117188, 1)
+texture = ExtResource("1_epgon")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(0.0847423, 0.552358, 0.429908, 1)
+position = Vector2(53, -27)
+rotation = -1.0472
+scale = Vector2(0.117188, 1.03906)
+texture = ExtResource("1_epgon")
+
+[node name="Collection Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collection Area"]
+position = Vector2(68, 31)
+shape = SubResource("RectangleShape2D_f8rtm")

@@ -1,5 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dyoqbx0jyxeb"]
+[gd_scene load_steps=6 format=3 uid="uid://dyoqbx0jyxeb"]
 
+[ext_resource type="Texture2D" uid="uid://b070ach5lj7rd" path="res://Assets/sky.jpg" id="1_gmhot"]
+[ext_resource type="PackedScene" uid="uid://ivtnyyctvcsl" path="res://Scenes/gnome.tscn" id="2_48ylr"]
+[ext_resource type="Texture2D" uid="uid://jgxd87s05qsm" path="res://Assets/ground.jpg" id="2_u82ji"]
+[ext_resource type="PackedScene" uid="uid://bcwdgoepfnx52" path="res://Scenes/plant.tscn" id="2_xn7s7"]
+[ext_resource type="PackedScene" uid="uid://bvheh4rb58pfh" path="res://Scenes/hose.tscn" id="5_edj1w"]
 [ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_g8mcg"]
 
 [sub_resource type="SystemFont" id="SystemFont_7qaeo"]
@@ -7,7 +12,49 @@
 [node name="MainLevel" type="Node2D" groups=["level_manager"]]
 script = ExtResource("1_g8mcg")
 
-[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Sky" type="Sprite2D" parent="."]
+modulate = Color(0.374427, 0.583672, 0.715534, 1)
+position = Vector2(598, 437)
+scale = Vector2(0.32209, 0.32209)
+texture = ExtResource("1_gmhot")
+
+[node name="Ground" type="Sprite2D" parent="."]
+modulate = Color(0.531001, 0.708658, 0.508301, 1)
+position = Vector2(577, 528)
+scale = Vector2(0.28852, 0.248347)
+texture = ExtResource("2_u82ji")
+
+[node name="Gnome" parent="." instance=ExtResource("2_48ylr")]
+position = Vector2(592, 593)
+
+[node name="Plant" parent="." instance=ExtResource("2_xn7s7")]
+position = Vector2(332, 129)
+
+[node name="Plant2" parent="." instance=ExtResource("2_xn7s7")]
+position = Vector2(484, 127)
+
+[node name="Plant3" parent="." instance=ExtResource("2_xn7s7")]
+position = Vector2(628, 135)
+
+[node name="Plant4" parent="." instance=ExtResource("2_xn7s7")]
+position = Vector2(790, 151)
+
+[node name="Plant5" parent="." instance=ExtResource("2_xn7s7")]
+position = Vector2(330, 339)
+
+[node name="Plant6" parent="." instance=ExtResource("2_xn7s7")]
+position = Vector2(487, 341)
+
+[node name="Plant7" parent="." instance=ExtResource("2_xn7s7")]
+position = Vector2(638, 342)
+
+[node name="Plant8" parent="." instance=ExtResource("2_xn7s7")]
+position = Vector2(789, 339)
+
+[node name="Hose" parent="." instance=ExtResource("5_edj1w")]
+position = Vector2(112, 511)
 
 [node name="LevelTimer" type="Timer" parent="."]
 wait_time = 120.0
