@@ -1,17 +1,59 @@
-[gd_scene load_steps=3 format=3 uid="uid://ivtnyyctvcsl"]
+[gd_scene load_steps=7 format=3 uid="uid://ivtnyyctvcsl"]
 
 [ext_resource type="Script" path="res://Scripts/gnome.gd" id="1_huuxy"]
+[ext_resource type="Texture2D" uid="uid://cjv1tsj0df6rt" path="res://Assets/gnome/gnome3.png" id="2_irbrp"]
+[ext_resource type="Texture2D" uid="uid://brseh3d44c7pn" path="res://Assets/gnome/gnome1.png" id="3_h4lm2"]
+[ext_resource type="Texture2D" uid="uid://c4u1w8w2thdl2" path="res://Assets/gnome/gnome2.png" id="4_w6krd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3bcka"]
+size = Vector2(26, 20)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q4i4b"]
+radius = 12.0
+height = 64.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_11f5f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_irbrp")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_h4lm2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_irbrp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_w6krd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_irbrp")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [node name="Gnome" type="CharacterBody2D"]
 script = ExtResource("1_huuxy")
 
+[node name="InteractArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+position = Vector2(-13, 14)
+shape = SubResource("RectangleShape2D_3bcka")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_q4i4b")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -18.0
-offset_top = -20.0
-offset_right = 22.0
-offset_bottom = 20.0
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.36, -13.775)
+scale = Vector2(0.16, 0.16)
+sprite_frames = SubResource("SpriteFrames_11f5f")
+animation = &"idle"

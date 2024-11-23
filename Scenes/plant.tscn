@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcwdgoepfnx52"]
+
+[ext_resource type="Script" path="res://Scripts/plant.gd" id="1_3fwsr"]
+[ext_resource type="Resource" uid="uid://beh7okmkh1o0n" path="res://Resources/plant_info.tres" id="2_6x14g"]
+[ext_resource type="Texture2D" uid="uid://c002fnmxm3agh" path="res://icon.svg" id="3_7klb6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1yvjp"]
+size = Vector2(102, 100)
+
+[node name="Plant" type="StaticBody2D"]
+script = ExtResource("1_3fwsr")
+stats = ExtResource("2_6x14g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, -4)
+scale = Vector2(0.875, 0.8125)
+texture = ExtResource("3_7klb6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1yvjp")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -79.0
+offset_top = -96.0
+offset_right = 82.0
+offset_bottom = -69.0
+value = 100.0
