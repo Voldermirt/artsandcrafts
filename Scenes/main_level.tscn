@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dyoqbx0jyxeb"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Background Music"
