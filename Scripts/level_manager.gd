@@ -13,8 +13,8 @@ func _ready() -> void:
 	timer.start()
 	update_score(score)
 	
-	for plant in get_tree().get_nodes_in_group("plants"):
-		plant.signal.connect(plant_status_updated)
+	for plant in $plants.get_children():
+		plant.on_plant_death.connect(plant_status_updated)
 
 func update_score(amount):
 	score += amount

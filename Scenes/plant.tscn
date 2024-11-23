@@ -25,3 +25,4 @@ offset_top = -96.0
 offset_right = 82.0
 offset_bottom = -69.0
 value = 100.0
+show_percentage = false
