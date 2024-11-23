@@ -5,8 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://jgxd87s05qsm" path="res://Assets/ground.jpg" id="2_u82ji"]
 [ext_resource type="PackedScene" uid="uid://bcwdgoepfnx52" path="res://Scenes/plant.tscn" id="2_xn7s7"]
 [ext_resource type="PackedScene" uid="uid://bvheh4rb58pfh" path="res://Scenes/hose.tscn" id="5_edj1w"]
+[ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_g8mcg"]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="SystemFont" id="SystemFont_7qaeo"]
+
+[node name="MainLevel" type="Node2D" groups=["level_manager"]]
+script = ExtResource("1_g8mcg")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
@@ -51,3 +55,35 @@ position = Vector2(789, 339)
 
 [node name="Hose" parent="." instance=ExtResource("5_edj1w")]
 position = Vector2(112, 511)
+
+[node name="LevelTimer" type="Timer" parent="."]
+wait_time = 120.0
+
+[node name="UI" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Score" type="Label" parent="UI"]
+layout_mode = 1
+offset_right = 148.0
+offset_bottom = 55.0
+theme_override_fonts/font = SubResource("SystemFont_7qaeo")
+theme_override_font_sizes/font_size = 40
+text = "SCORE: "
+
+[node name="TimeLeft" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 40
+text = "60"
+
+[connection signal="timeout" from="LevelTimer" to="." method="time_up"]
