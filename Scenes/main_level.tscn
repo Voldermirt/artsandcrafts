@@ -7,12 +7,12 @@
 [ext_resource type="AudioStream" uid="uid://f74768dt55uh" path="res://audio/background_track.wav" id="2_afshw"]
 [ext_resource type="Texture2D" uid="uid://jgxd87s05qsm" path="res://Assets/ground.jpg" id="2_u82ji"]
 [ext_resource type="PackedScene" uid="uid://bcwdgoepfnx52" path="res://Scenes/plant.tscn" id="2_xn7s7"]
-[ext_resource type="Resource" uid="uid://b1ukxrlxfprkx" path="res://Resources/cactus.tres" id="3_6vh6c"]
-[ext_resource type="Resource" uid="uid://dsj7es2cq3gt4" path="res://Resources/blue_thing.tres" id="4_kjv7c"]
-[ext_resource type="PackedScene" uid="uid://bvheh4rb58pfh" path="res://Scenes/hose.tscn" id="5_edj1w"]
-[ext_resource type="Resource" uid="uid://cr6odwef56nvy" path="res://Resources/light_pink.tres" id="5_kb6cs"]
-[ext_resource type="Resource" uid="uid://drswgupcle8te" path="res://Resources/pink1.tres" id="6_bnvxs"]
-[ext_resource type="Resource" uid="uid://ca2kbt62n1bs6" path="res://Resources/pink2.tres" id="7_gjc3i"]
+[ext_resource type="Resource" path="res://Resources/cactus.tres" id="3_6vh6c"]
+[ext_resource type="Resource" path="res://Resources/blue_thing.tres" id="4_kjv7c"]
+[ext_resource type="PackedScene" path="res://Scenes/hose.tscn" id="5_edj1w"]
+[ext_resource type="Resource" path="res://Resources/light_pink.tres" id="5_kb6cs"]
+[ext_resource type="Resource" path="res://Resources/pink1.tres" id="6_bnvxs"]
+[ext_resource type="Resource" path="res://Resources/pink2.tres" id="7_gjc3i"]
 [ext_resource type="Texture2D" uid="uid://c1qyd6121u0f0" path="res://Assets/water_drop.png" id="13_vcyg7"]
 
 [sub_resource type="SystemFont" id="SystemFont_7qaeo"]
@@ -29,6 +29,8 @@ plants = Array[ExtResource("2_2yaj6")]([ExtResource("3_6vh6c"), ExtResource("4_k
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_afshw")
+autoplay = true
+bus = &"Background Music"
 
 [node name="Sky" type="Sprite2D" parent="."]
 modulate = Color(0.374427, 0.583672, 0.715534, 1)
