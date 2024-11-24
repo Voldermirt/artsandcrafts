@@ -27,6 +27,9 @@ func _physics_process(delta: float) -> void:
 		sprite.play("idle")
 	else:
 		sprite.play("walk")
+		$Marker2D.rotation = ((2 * PI) + direction.angle())
+	
+	
 	
 	#else:
 		#velocity.x = move_toward(velocity.x, 0, SPEED)
