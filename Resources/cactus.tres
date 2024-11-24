@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PlantInfo" load_steps=3 format=3 uid="uid://b1ukxrlxfprkx"]
+
+[ext_resource type="Script" path="res://Scripts/plant_info.gd" id="1_4gjyv"]
+[ext_resource type="Texture2D" uid="uid://bcficps84f3f6" path="res://Assets/plant_cactus_sprite.png" id="2_k7tou"]
+
+[resource]
+script = ExtResource("1_4gjyv")
+health = 10
+sprite = ExtResource("2_k7tou")
+decay = 0.1
+alive = true
