@@ -151,7 +151,7 @@ position = Vector2(841, 430)
 [node name="Boundaries" type="Node2D" parent="."]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Boundaries"]
-position = Vector2(0, 64)
+position = Vector2(2, 56)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D"]

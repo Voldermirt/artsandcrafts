@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/plant.gd" id="1_3fwsr"]
 [ext_resource type="Resource" uid="uid://b1ukxrlxfprkx" path="res://Resources/cactus.tres" id="2_jj2e2"]
-[ext_resource type="Texture2D" uid="uid://c002fnmxm3agh" path="res://icon.svg" id="3_7klb6"]
+[ext_resource type="Texture2D" uid="uid://c8w14fk7foln7" path="res://Assets/pot_sprite.png" id="3_7rm42"]
 [ext_resource type="Texture2D" uid="uid://bcficps84f3f6" path="res://Assets/plant_cactus_sprite.png" id="4_gh445"]
 [ext_resource type="Texture2D" uid="uid://dkrgbxkiui8br" path="res://Assets/watering_can.png" id="5_v7c2p"]
 
@@ -10,8 +10,9 @@
 offsets = PackedFloat32Array(0, 0.20155, 0.534884, 1)
 colors = PackedColorArray(0.960784, 0, 0, 1, 1, 0, 0, 1, 0.902855, 0.902856, 0, 1, 0, 1, 0, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1yvjp"]
-size = Vector2(112, 111)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jcqsi"]
+radius = 41.1765
+height = 82.353
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4fnqf"]
 bg_color = Color(1, 1, 1, 1)
@@ -95,14 +96,14 @@ script = ExtResource("1_3fwsr")
 stats = ExtResource("2_jj2e2")
 gradient = SubResource("Gradient_6rcht")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.59, 0.222135, 0.0767, 1)
-scale = Vector2(0.875, 0.875)
-texture = ExtResource("3_7klb6")
+[node name="Pot" type="Sprite2D" parent="."]
+position = Vector2(2.38419e-07, 18.8235)
+scale = Vector2(0.2, 0.15)
+texture = ExtResource("3_7rm42")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_1yvjp")
+position = Vector2(0, 16.4706)
+shape = SubResource("CapsuleShape2D_jcqsi")
 
 [node name="Panel" type="Panel" parent="."]
 z_index = 2
@@ -134,8 +135,8 @@ value = 100.0
 show_percentage = false
 
 [node name="Plant" type="Sprite2D" parent="."]
-position = Vector2(0, -27.7)
-scale = Vector2(0.2, 0.2)
+position = Vector2(5.88235, -37.6471)
+scale = Vector2(0.17, 0.17)
 texture = ExtResource("4_gh445")
 
 [node name="WateringCan" type="Sprite2D" parent="."]
