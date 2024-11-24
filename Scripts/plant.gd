@@ -29,6 +29,12 @@ func _process(delta: float) -> void:
             tick_timer = 0.0
             
     $ProgressBar.self_modulate = gradient.sample(float(health) / max_health)
+    
+    # Y Sort
+    if global_position.y > get_tree().get_first_node_in_group("player").global_position.y:
+        $Plant.z_index = 2
+    else:
+        $Plant.z_index = 0
 
 func water():
     health = max_health

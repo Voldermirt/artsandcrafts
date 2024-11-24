@@ -1,10 +1,26 @@
-[gd_scene load_steps=10 format=3 uid="uid://bvheh4rb58pfh"]
+[gd_scene load_steps=15 format=3 uid="uid://bvheh4rb58pfh"]
 
 [ext_resource type="Script" path="res://Scripts/hose.gd" id="1_ighed"]
 [ext_resource type="Texture2D" uid="uid://cq5l5upf3qtis" path="res://Assets/faucet/faucet_droplet.png" id="2_lrh5n"]
+[ext_resource type="Texture2D" uid="uid://d21yl78ttywt2" path="res://Assets/concrete.png" id="2_xy0ix"]
 [ext_resource type="Texture2D" uid="uid://b2e5ir77i3x5s" path="res://Assets/faucet/faucet.png" id="3_s4lku"]
 
+[sub_resource type="Curve" id="Curve_4t1pp"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.886179, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.384615), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_jcg1e"]
+curve = SubResource("Curve_4t1pp")
+
+[sub_resource type="Curve" id="Curve_q53qn"]
+_data = [Vector2(0, 0.373626), 0.0, 0.0, 0, 0, Vector2(0.699187, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.725275), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_p3wlu"]
+curve = SubResource("Curve_q53qn")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_deers"]
+lifetime_randomness = 0.12
 particle_flag_disable_z = true
 angle_min = 38.8
 angle_max = 164.0
@@ -13,13 +29,18 @@ initial_velocity_min = 4.14
 initial_velocity_max = 54.27
 angular_velocity_min = -98.39
 angular_velocity_max = -98.39
-gravity = Vector3(0, 98, 0)
+gravity = Vector3(0, 150, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = -2.23517e-06
+scale_curve = SubResource("CurveTexture_p3wlu")
+alpha_curve = SubResource("CurveTexture_jcg1e")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_w6wjb"]
-size = Vector2(76, 64)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_viq6l"]
+radius = 15.0
+height = 106.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f8rtm"]
-size = Vector2(75, 70)
+size = Vector2(98.5, 70)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3cye4"]
 bg_color = Color(1, 1, 1, 1)
@@ -38,6 +59,12 @@ bg_color = Color(1, 1, 1, 1)
 [node name="Hose" type="StaticBody2D"]
 script = ExtResource("1_ighed")
 
+[node name="Concrete" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(41, 22)
+scale = Vector2(0.494099, 0.479464)
+texture = ExtResource("2_xy0ix")
+
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(64, -48)
 amount = 20
@@ -45,10 +72,12 @@ process_material = SubResource("ParticleProcessMaterial_deers")
 texture = ExtResource("2_lrh5n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 32)
-shape = SubResource("RectangleShape2D_w6wjb")
+position = Vector2(6, 22)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_viq6l")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
 position = Vector2(10, -28)
 scale = Vector2(0.0687097, 0.0687097)
 texture = ExtResource("3_s4lku")
@@ -56,7 +85,7 @@ texture = ExtResource("3_s4lku")
 [node name="Collection Area" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collection Area"]
-position = Vector2(68, 31)
+position = Vector2(84, 27)
 shape = SubResource("RectangleShape2D_f8rtm")
 
 [node name="Panel" type="Panel" parent="."]
@@ -74,7 +103,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_3cye4")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 visible = false
-self_modulate = Color(1, 0, 0, 1)
+self_modulate = Color(0, 0.216667, 1, 1)
 z_index = 2
 anchors_preset = 5
 anchor_left = 0.5
