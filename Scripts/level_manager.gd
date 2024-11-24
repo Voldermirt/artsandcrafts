@@ -98,8 +98,7 @@ func time_up():
 
 # when the hose finishes its progress bar, add water points
 func _on_hose_on_hose_water_filled(amount: Variant) -> void:
-	$Gnome.fill_water(amount)
-
+  get_tree().get_first_node_in_group("player").fill_water(amount)
 
 func _on_start_pressed() -> void:
 	how_to_play.hide()
