@@ -39,7 +39,7 @@ scale = Vector2(0.32209, 0.32209)
 texture = ExtResource("1_gmhot")
 
 [node name="Ground" type="Sprite2D" parent="."]
-modulate = Color(0.531001, 0.708658, 0.508301, 1)
+modulate = Color(0.450418, 0.620346, 0.428991, 1)
 position = Vector2(577, 528)
 scale = Vector2(0.28852, 0.248347)
 texture = ExtResource("2_u82ji")
@@ -184,4 +184,5 @@ metadata/_edit_group_ = true
 position = Vector2(-10, -344)
 shape = SubResource("RectangleShape2D_3hux7")
 
+[connection signal="on_hose_water_filled" from="Hose" to="." method="_on_hose_on_hose_water_filled"]
 [connection signal="timeout" from="LevelTimer" to="." method="time_up"]

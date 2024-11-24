@@ -27,6 +27,11 @@ func water_plant(plant : Plant) -> void:
 		water_updated.emit(water)
 		plant.water()
 
+# add amount to water level
+func fill_water(amount):
+	water = clamp(water + amount, 0, 3)
+	water_updated.emit(water)
+
 func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.

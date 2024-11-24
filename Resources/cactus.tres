@@ -9,3 +9,4 @@ health = 10
 sprite = ExtResource("2_k7tou")
 decay = 0.1
 alive = true
+score = 5
