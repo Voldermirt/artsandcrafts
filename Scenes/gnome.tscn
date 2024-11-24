@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cjv1tsj0df6rt" path="res://Assets/gnome/gnome3.png" id="2_irbrp"]
 [ext_resource type="Texture2D" uid="uid://brseh3d44c7pn" path="res://Assets/gnome/gnome1.png" id="3_h4lm2"]
 [ext_resource type="Texture2D" uid="uid://c4u1w8w2thdl2" path="res://Assets/gnome/gnome2.png" id="4_w6krd"]
-[ext_resource type="AudioStream" uid="uid://2snj7jdt1xy0" path="res://audio/gnome_woo.mp3" id="5_mmafg"]
+[ext_resource type="AudioStream" uid="uid://c8s7wrihjyk4a" path="res://audio/woo_gnone_fast.wav" id="5_mc8ug"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q4i4b"]
 radius = 25.0
@@ -73,7 +73,7 @@ shape = SubResource("RectangleShape2D_meixb")
 shape = SubResource("CircleShape2D_ayoin")
 
 [node name="WOO" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_mmafg")
+stream = ExtResource("5_mc8ug")
 
 [connection signal="body_entered" from="Marker2D/InteractArea" to="." method="interact_area_entered"]
 [connection signal="body_exited" from="Marker2D/InteractArea" to="." method="interact_area_exited"]
