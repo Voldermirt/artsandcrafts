@@ -68,7 +68,7 @@ func select_plant():
 	var plant = null
 	var min_dist = 999999.0
 	for body in $Marker2D/InteractArea.get_overlapping_bodies():
-		if body is Plant:
+		if body is Plant and body.alive:
 			# Select closest plant
 			var dist = $Marker2D/InteractArea.global_position.distance_to(body.global_position)
 			if dist < min_dist:

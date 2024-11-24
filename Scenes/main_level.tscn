@@ -1,11 +1,9 @@
 [gd_scene load_steps=19 format=3 uid="uid://dyoqbx0jyxeb"]
 
 [ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_g8mcg"]
-[ext_resource type="Texture2D" uid="uid://b070ach5lj7rd" path="res://Assets/sky.jpg" id="1_gmhot"]
 [ext_resource type="Script" path="res://Scripts/plant_info.gd" id="2_2yaj6"]
 [ext_resource type="PackedScene" uid="uid://ivtnyyctvcsl" path="res://Scenes/gnome.tscn" id="2_48ylr"]
 [ext_resource type="AudioStream" uid="uid://f74768dt55uh" path="res://audio/background_track.wav" id="2_afshw"]
-[ext_resource type="Texture2D" uid="uid://jgxd87s05qsm" path="res://Assets/ground.jpg" id="2_u82ji"]
 [ext_resource type="PackedScene" uid="uid://bcwdgoepfnx52" path="res://Scenes/plant.tscn" id="2_xn7s7"]
 [ext_resource type="Resource" uid="uid://b1ukxrlxfprkx" path="res://Resources/cactus.tres" id="3_6vh6c"]
 [ext_resource type="Resource" uid="uid://dsj7es2cq3gt4" path="res://Resources/blue_thing.tres" id="4_kjv7c"]
@@ -13,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://cr6odwef56nvy" path="res://Resources/light_pink.tres" id="5_kb6cs"]
 [ext_resource type="Resource" uid="uid://drswgupcle8te" path="res://Resources/pink1.tres" id="6_bnvxs"]
 [ext_resource type="Resource" uid="uid://ca2kbt62n1bs6" path="res://Resources/pink2.tres" id="7_gjc3i"]
+[ext_resource type="Texture2D" uid="uid://dm2gihpmpk54e" path="res://Assets/ground.png" id="10_pfvlf"]
 [ext_resource type="Texture2D" uid="uid://bxx5pinkemisa" path="res://Assets/fence.png" id="11_gf4pa"]
 [ext_resource type="Texture2D" uid="uid://c1qyd6121u0f0" path="res://Assets/water_drop.png" id="13_vcyg7"]
 
@@ -20,6 +19,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ss45j"]
 size = Vector2(1152, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e6cst"]
+size = Vector2(20, 632)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3hux7"]
 size = Vector2(20, 688)
@@ -33,32 +35,26 @@ stream = ExtResource("2_afshw")
 autoplay = true
 bus = &"Background Music"
 
-[node name="Sky" type="Sprite2D" parent="."]
-modulate = Color(0.374427, 0.583672, 0.715534, 1)
-position = Vector2(598, 437)
-scale = Vector2(0.32209, 0.32209)
-texture = ExtResource("1_gmhot")
-metadata/_edit_lock_ = true
-
 [node name="Ground" type="Sprite2D" parent="."]
 modulate = Color(0.450418, 0.620346, 0.428991, 1)
-position = Vector2(574, 336)
-scale = Vector2(0.297164, 0.255787)
-texture = ExtResource("2_u82ji")
+z_index = -3
+position = Vector2(574, 326)
+scale = Vector2(0.928325, 0.799066)
+texture = ExtResource("10_pfvlf")
 
 [node name="Fence" type="Sprite2D" parent="."]
 position = Vector2(602, 98)
 scale = Vector2(1.24, 0.89)
 texture = ExtResource("11_gf4pa")
 
-[node name="Gnome" parent="." instance=ExtResource("2_48ylr")]
-position = Vector2(592, 593)
-
-[node name="Hose" parent="." instance=ExtResource("5_edj1w")]
-position = Vector2(112, 511)
+[node name="Fence2" type="Sprite2D" parent="."]
+z_index = 3
+position = Vector2(602, 689.585)
+scale = Vector2(1.24, 0.89)
+texture = ExtResource("11_gf4pa")
 
 [node name="LevelTimer" type="Timer" parent="."]
-wait_time = 120.0
+wait_time = 90.0
 one_shot = true
 
 [node name="UI" type="Control" parent="."]
@@ -129,39 +125,39 @@ stretch_mode = 4
 [node name="plants" type="Node2D" parent="."]
 
 [node name="Plant" parent="plants" instance=ExtResource("2_xn7s7")]
-position = Vector2(275, 166)
+position = Vector2(159, 247)
 
 [node name="Plant2" parent="plants" instance=ExtResource("2_xn7s7")]
-position = Vector2(392, 176)
+position = Vector2(316, 201)
 
 [node name="Plant3" parent="plants" instance=ExtResource("2_xn7s7")]
-position = Vector2(513, 155)
+position = Vector2(480, 246)
 
 [node name="Plant4" parent="plants" instance=ExtResource("2_xn7s7")]
-position = Vector2(625, 166)
+position = Vector2(661, 186)
 
 [node name="Plant5" parent="plants" instance=ExtResource("2_xn7s7")]
-position = Vector2(378, 419)
+position = Vector2(369, 515)
 
 [node name="Plant6" parent="plants" instance=ExtResource("2_xn7s7")]
-position = Vector2(492, 429)
+position = Vector2(499, 522)
 
 [node name="Plant7" parent="plants" instance=ExtResource("2_xn7s7")]
-position = Vector2(741, 177)
+position = Vector2(777, 257)
 
 [node name="Plant8" parent="plants" instance=ExtResource("2_xn7s7")]
-position = Vector2(601, 427)
+position = Vector2(603, 437)
 
 [node name="Plant9" parent="plants" instance=ExtResource("2_xn7s7")]
-position = Vector2(729, 409)
+position = Vector2(764, 511)
 
 [node name="Plant10" parent="plants" instance=ExtResource("2_xn7s7")]
-position = Vector2(841, 430)
+position = Vector2(943, 355)
 
 [node name="Boundaries" type="Node2D" parent="."]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Boundaries"]
-position = Vector2(2, 56)
+position = Vector2(0, 56)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D"]
@@ -180,6 +176,10 @@ shape = SubResource("RectangleShape2D_ss45j")
 position = Vector2(0, 668)
 metadata/_edit_lock_ = true
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D3"]
+position = Vector2(-10, -316)
+shape = SubResource("RectangleShape2D_e6cst")
+
 [node name="StaticBody2D4" type="StaticBody2D" parent="Boundaries"]
 position = Vector2(1172, 668)
 metadata/_edit_group_ = true
@@ -188,5 +188,13 @@ metadata/_edit_group_ = true
 position = Vector2(-10, -344)
 shape = SubResource("RectangleShape2D_3hux7")
 
-[connection signal="on_hose_water_filled" from="Hose" to="." method="_on_hose_on_hose_water_filled"]
+[node name="Hose" parent="." instance=ExtResource("5_edj1w")]
+y_sort_enabled = true
+position = Vector2(135, 419)
+
+[node name="Gnome" parent="." instance=ExtResource("2_48ylr")]
+y_sort_enabled = true
+position = Vector2(364, 373)
+
 [connection signal="timeout" from="LevelTimer" to="." method="time_up"]
+[connection signal="on_hose_water_filled" from="Hose" to="." method="_on_hose_on_hose_water_filled"]

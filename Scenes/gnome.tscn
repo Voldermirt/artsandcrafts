@@ -7,8 +7,8 @@
 [ext_resource type="AudioStream" uid="uid://2snj7jdt1xy0" path="res://audio/gnome_woo.mp3" id="5_mmafg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q4i4b"]
-radius = 25.0
-height = 50.0
+radius = 14.845
+height = 56.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_11f5f"]
 animations = [{
@@ -49,12 +49,14 @@ script = ExtResource("1_huuxy")
 accel = 80.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 17.185)
+position = Vector2(-3.2, 26.155)
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_q4i4b")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
-position = Vector2(3, -24)
+y_sort_enabled = true
+position = Vector2(-3, -23)
 scale = Vector2(0.33, 0.33)
 sprite_frames = SubResource("SpriteFrames_11f5f")
 animation = &"walk"
@@ -62,14 +64,19 @@ frame_progress = 0.287324
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, 17)
+metadata/_edit_lock_ = true
 
 [node name="InteractArea" type="Area2D" parent="Marker2D"]
+position = Vector2(0, -7)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D/InteractArea"]
 position = Vector2(66, 0)
 shape = SubResource("RectangleShape2D_meixb")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Marker2D/InteractArea"]
+position = Vector2(0, 3)
 shape = SubResource("CircleShape2D_ayoin")
 
 [node name="WOO" type="AudioStreamPlayer2D" parent="."]

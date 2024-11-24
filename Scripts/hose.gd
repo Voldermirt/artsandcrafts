@@ -14,6 +14,12 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	progress_bar.value = timer.wait_time - timer.time_left
+	if global_position.y > get_tree().get_first_node_in_group("player").global_position.y:
+		$Sprite2D.z_index = 2
+		$GPUParticles2D.z_index = 2
+	else:
+		$Sprite2D.z_index = 0
+		$GPUParticles2D.z_index = 0
 
 
 func _on_collection_area_body_entered(body: Node2D) -> void:
