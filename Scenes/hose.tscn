@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bvheh4rb58pfh"]
+[gd_scene load_steps=9 format=3 uid="uid://bvheh4rb58pfh"]
 
 [ext_resource type="Texture2D" uid="uid://c002fnmxm3agh" path="res://icon.svg" id="1_epgon"]
+[ext_resource type="Script" path="res://Scripts/hose.gd" id="1_ighed"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_deers"]
 particle_flag_disable_z = true
@@ -19,7 +20,22 @@ size = Vector2(76, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f8rtm"]
 size = Vector2(75, 70)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3cye4"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_00ei4"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5lfwl"]
+bg_color = Color(1, 1, 1, 1)
+
 [node name="Hose" type="StaticBody2D"]
+script = ExtResource("1_ighed")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(108, 3)
@@ -48,3 +64,41 @@ texture = ExtResource("1_epgon")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collection Area"]
 position = Vector2(68, 31)
 shape = SubResource("RectangleShape2D_f8rtm")
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+z_index = 2
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -43.5294
+offset_top = -100.0
+offset_right = 43.4706
+offset_bottom = -86.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3cye4")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
+self_modulate = Color(1, 0, 0, 1)
+z_index = 2
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -42.3529
+offset_top = -97.6471
+offset_right = 40.6471
+offset_bottom = -87.6471
+grow_horizontal = 2
+theme_override_constants/outline_size = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_00ei4")
+theme_override_styles/fill = SubResource("StyleBoxFlat_5lfwl")
+max_value = 1.0
+value = 1.0
+show_percentage = false
+
+[node name="HoseTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Collection Area" to="." method="_on_collection_area_body_entered"]
+[connection signal="body_exited" from="Collection Area" to="." method="_on_collection_area_body_exited"]
+[connection signal="timeout" from="HoseTimer" to="." method="_on_hose_timer_timeout"]

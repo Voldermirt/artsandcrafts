@@ -2,12 +2,15 @@ extends StaticBody2D
 class_name Plant
 
 signal on_plant_death(negate_score)
+signal on_plant_watered(add_score)
 @export var stats: Resource
 @export var gradient: Gradient
 
+# default values that will be changed by plant resource
 var max_health = 100
 var health = 100
 var alive = true
+var score = 10
 
 @export var tps := 2
 var tick_timer = 0.0
@@ -30,6 +33,7 @@ func _process(delta: float) -> void:
 func water():
 	health = max_health
 	$ProgressBar.value = health
+	on_plant_watered.emit(score)
 
 func tick():
 	# Decay represents how likely the plant is to take damage
@@ -50,6 +54,7 @@ func set_stats(s):
 	max_health = s.health
 	health = max_health
 	alive = stats.alive
+	score = stats.score
 	$ProgressBar.max_value = max_health
 	$ProgressBar.value = health
 	

@@ -9,3 +9,4 @@ health = 26
 sprite = ExtResource("2_cs58f")
 decay = 0.5
 alive = true
+score = 10
