@@ -35,6 +35,12 @@ func water():
 	$ProgressBar.value = health
 	on_plant_watered.emit(score)
 
+func die():
+	alive = false
+	$Plant.modulate = Color.SADDLE_BROWN
+	$Panel.visible = false
+	$ProgressBar.visible = false
+
 func tick():
 	# Decay represents how likely the plant is to take damage
 	# This is definitely more complicated then it needs to be
@@ -44,7 +50,7 @@ func tick():
 		health = clamp(health - 1, 0, max_health)
 		$ProgressBar.value = health
 		if health <= 0:
-			alive = false
+			die()
 			emit_signal("on_plant_death", -10)
 			print("signal sent, 10 score negated")
 

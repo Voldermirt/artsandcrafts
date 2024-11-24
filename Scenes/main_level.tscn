@@ -7,12 +7,12 @@
 [ext_resource type="AudioStream" uid="uid://f74768dt55uh" path="res://audio/background_track.wav" id="2_afshw"]
 [ext_resource type="Texture2D" uid="uid://jgxd87s05qsm" path="res://Assets/ground.jpg" id="2_u82ji"]
 [ext_resource type="PackedScene" uid="uid://bcwdgoepfnx52" path="res://Scenes/plant.tscn" id="2_xn7s7"]
-[ext_resource type="Resource" path="res://Resources/cactus.tres" id="3_6vh6c"]
-[ext_resource type="Resource" path="res://Resources/blue_thing.tres" id="4_kjv7c"]
-[ext_resource type="PackedScene" path="res://Scenes/hose.tscn" id="5_edj1w"]
-[ext_resource type="Resource" path="res://Resources/light_pink.tres" id="5_kb6cs"]
-[ext_resource type="Resource" path="res://Resources/pink1.tres" id="6_bnvxs"]
-[ext_resource type="Resource" path="res://Resources/pink2.tres" id="7_gjc3i"]
+[ext_resource type="Resource" uid="uid://b1ukxrlxfprkx" path="res://Resources/cactus.tres" id="3_6vh6c"]
+[ext_resource type="Resource" uid="uid://dsj7es2cq3gt4" path="res://Resources/blue_thing.tres" id="4_kjv7c"]
+[ext_resource type="PackedScene" uid="uid://bvheh4rb58pfh" path="res://Scenes/hose.tscn" id="5_edj1w"]
+[ext_resource type="Resource" uid="uid://cr6odwef56nvy" path="res://Resources/light_pink.tres" id="5_kb6cs"]
+[ext_resource type="Resource" uid="uid://drswgupcle8te" path="res://Resources/pink1.tres" id="6_bnvxs"]
+[ext_resource type="Resource" uid="uid://ca2kbt62n1bs6" path="res://Resources/pink2.tres" id="7_gjc3i"]
 [ext_resource type="Texture2D" uid="uid://c1qyd6121u0f0" path="res://Assets/water_drop.png" id="13_vcyg7"]
 
 [sub_resource type="SystemFont" id="SystemFont_7qaeo"]
@@ -52,6 +52,7 @@ position = Vector2(112, 511)
 
 [node name="LevelTimer" type="Timer" parent="."]
 wait_time = 120.0
+one_shot = true
 
 [node name="UI" type="Control" parent="."]
 unique_name_in_owner = true
@@ -80,39 +81,38 @@ grow_horizontal = 0
 theme_override_font_sizes/font_size = 40
 text = "60"
 
-[node name="Control" type="VBoxContainer" parent="UI"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -77.0
-offset_top = -385.0
-offset_right = 78.0
-offset_bottom = 520.0
-grow_horizontal = 0
-grow_vertical = 0
+[node name="drop3" type="TextureRect" parent="UI"]
+z_index = 2
+layout_mode = 2
+offset_left = 1075.0
+offset_top = 263.0
+offset_right = 1230.0
+offset_bottom = 562.186
 scale = Vector2(0.4, 0.4)
-metadata/_edit_group_ = true
-
-[node name="drop3" type="TextureRect" parent="UI/Control"]
-z_index = 2
-layout_mode = 2
 texture = ExtResource("13_vcyg7")
 expand_mode = 5
 stretch_mode = 4
 
-[node name="drop2" type="TextureRect" parent="UI/Control"]
+[node name="drop2" type="TextureRect" parent="UI"]
 z_index = 2
 layout_mode = 2
+offset_left = 1075.0
+offset_top = 384.2
+offset_right = 1230.0
+offset_bottom = 683.386
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("13_vcyg7")
 expand_mode = 5
 stretch_mode = 4
 
-[node name="drop1" type="TextureRect" parent="UI/Control"]
+[node name="drop1" type="TextureRect" parent="UI"]
 z_index = 2
 layout_mode = 2
+offset_left = 1075.0
+offset_top = 505.0
+offset_right = 1230.0
+offset_bottom = 804.186
+scale = Vector2(0.4, 0.4)
 size_flags_vertical = 4
 texture = ExtResource("13_vcyg7")
 expand_mode = 5
