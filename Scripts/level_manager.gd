@@ -20,6 +20,14 @@ func _ready() -> void:
 		plant.on_plant_death.connect(plant_died)
 		# Randomize plant
 		plant.set_stats(plants.pick_random())
+	
+	get_tree().get_first_node_in_group("player").water_updated.connect(update_water_ui)
+	
+
+func update_water_ui(water_level):
+	ui.get_node("Control/drop3").visible = water_level >= 1
+	ui.get_node("Control/drop2").visible = water_level >= 2
+	ui.get_node("Control/drop1").visible = water_level >= 3
 
 func update_score(amount):
 	score += amount

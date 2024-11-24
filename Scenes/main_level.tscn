@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dyoqbx0jyxeb"]
+[gd_scene load_steps=18 format=3 uid="uid://dyoqbx0jyxeb"]
 
 [ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_g8mcg"]
 [ext_resource type="Texture2D" uid="uid://b070ach5lj7rd" path="res://Assets/sky.jpg" id="1_gmhot"]
@@ -13,8 +13,15 @@
 [ext_resource type="Resource" uid="uid://cr6odwef56nvy" path="res://Resources/light_pink.tres" id="5_kb6cs"]
 [ext_resource type="Resource" uid="uid://drswgupcle8te" path="res://Resources/pink1.tres" id="6_bnvxs"]
 [ext_resource type="Resource" uid="uid://ca2kbt62n1bs6" path="res://Resources/pink2.tres" id="7_gjc3i"]
+[ext_resource type="Texture2D" uid="uid://c1qyd6121u0f0" path="res://Assets/water_drop.png" id="13_vcyg7"]
 
 [sub_resource type="SystemFont" id="SystemFont_7qaeo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ss45j"]
+size = Vector2(1152, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3hux7"]
+size = Vector2(20, 688)
 
 [node name="MainLevel" type="Node2D" groups=["level_manager"]]
 script = ExtResource("1_g8mcg")
@@ -71,6 +78,44 @@ grow_horizontal = 0
 theme_override_font_sizes/font_size = 40
 text = "60"
 
+[node name="Control" type="VBoxContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -77.0
+offset_top = -385.0
+offset_right = 78.0
+offset_bottom = 520.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.4, 0.4)
+metadata/_edit_group_ = true
+
+[node name="drop3" type="TextureRect" parent="UI/Control"]
+z_index = 2
+layout_mode = 2
+texture = ExtResource("13_vcyg7")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="drop2" type="TextureRect" parent="UI/Control"]
+z_index = 2
+layout_mode = 2
+texture = ExtResource("13_vcyg7")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="drop1" type="TextureRect" parent="UI/Control"]
+z_index = 2
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("13_vcyg7")
+expand_mode = 5
+stretch_mode = 4
+
 [node name="plants" type="Node2D" parent="."]
 
 [node name="Plant" parent="plants" instance=ExtResource("2_xn7s7")]
@@ -102,5 +147,39 @@ position = Vector2(729, 409)
 
 [node name="Plant10" parent="plants" instance=ExtResource("2_xn7s7")]
 position = Vector2(841, 430)
+
+[node name="Boundaries" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(0, 64)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D"]
+position = Vector2(576, -10)
+shape = SubResource("RectangleShape2D_ss45j")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(0, 668)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D2"]
+position = Vector2(576, -10)
+shape = SubResource("RectangleShape2D_ss45j")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(0, 668)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D3"]
+position = Vector2(-10, -344)
+shape = SubResource("RectangleShape2D_3hux7")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(1172, 668)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D4"]
+position = Vector2(-10, -344)
+shape = SubResource("RectangleShape2D_3hux7")
 
 [connection signal="timeout" from="LevelTimer" to="." method="time_up"]

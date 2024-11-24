@@ -27,6 +27,10 @@ func _process(delta: float) -> void:
 			
 	$ProgressBar.self_modulate = gradient.sample(float(health) / max_health)
 
+func water():
+	health = max_health
+	$ProgressBar.value = health
+
 func tick():
 	# Decay represents how likely the plant is to take damage
 	# This is definitely more complicated then it needs to be

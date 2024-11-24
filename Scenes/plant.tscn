@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bcwdgoepfnx52"]
+[gd_scene load_steps=14 format=3 uid="uid://bcwdgoepfnx52"]
 
 [ext_resource type="Script" path="res://Scripts/plant.gd" id="1_3fwsr"]
 [ext_resource type="Resource" uid="uid://b1ukxrlxfprkx" path="res://Resources/cactus.tres" id="2_jj2e2"]
 [ext_resource type="Texture2D" uid="uid://c002fnmxm3agh" path="res://icon.svg" id="3_7klb6"]
 [ext_resource type="Texture2D" uid="uid://bcficps84f3f6" path="res://Assets/plant_cactus_sprite.png" id="4_gh445"]
+[ext_resource type="Texture2D" uid="uid://dkrgbxkiui8br" path="res://Assets/watering_can.png" id="5_v7c2p"]
 
 [sub_resource type="Gradient" id="Gradient_6rcht"]
 offsets = PackedFloat32Array(0, 0.20155, 0.534884, 1)
@@ -25,6 +26,67 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_phvoa"]
 bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_3mtv1"]
+resource_name = "watering_can"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WateringCan:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.17647, -124.706), Vector2(1.17647, -141.176)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WateringCan:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.246091, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_twd85"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WateringCan:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.17647, -157.647)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WateringCan:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.155334]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xb68a"]
+_data = {
+"RESET": SubResource("Animation_twd85"),
+"watering_can": SubResource("Animation_3mtv1")
+}
 
 [node name="Plant" type="StaticBody2D"]
 position = Vector2(0, -1)
@@ -75,3 +137,17 @@ show_percentage = false
 position = Vector2(0, -27.7)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("4_gh445")
+
+[node name="WateringCan" type="Sprite2D" parent="."]
+visible = false
+z_index = 3
+position = Vector2(1.17647, -157.647)
+rotation = 0.155334
+scale = Vector2(0.33, 0.33)
+texture = ExtResource("5_v7c2p")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xb68a")
+}
+autoplay = "watering_can"

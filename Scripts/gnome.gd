@@ -1,7 +1,12 @@
 extends CharacterBody2D
 
+signal water_updated(level)
+
 @export  var speed = 300.0
 @export var accel = 40.0
+
+var max_water = 3
+var water = 3
 
 @onready
 var sprite : AnimatedSprite2D = $AnimatedSprite2D
@@ -14,9 +19,13 @@ func _input(event: InputEvent) -> void:
 		for body in $Marker2D/InteractArea.get_overlapping_bodies():
 			if body is Plant:
 				water_plant(body)
+				return
 
 func water_plant(plant : Plant) -> void:
-	print("Watering %s" % plant.name)
+	if water >= 1:
+		water -= 1
+		water_updated.emit(water)
+		plant.water()
 
 func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
