@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PlantInfo" load_steps=3 format=3 uid="uid://drswgupcle8te"]
+
+[ext_resource type="Script" path="res://Scripts/plant_info.gd" id="1_vbtjp"]
+[ext_resource type="Texture2D" uid="uid://bvuls3nxpk05t" path="res://Assets/plant_pink_sprite.png" id="2_cs58f"]
+
+[resource]
+script = ExtResource("1_vbtjp")
+health = 26
+sprite = ExtResource("2_cs58f")
+decay = 0.5
+alive = true

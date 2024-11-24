@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://c4u1w8w2thdl2" path="res://Assets/gnome/gnome2.png" id="4_w6krd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q4i4b"]
-radius = 22.0
-height = 44.0
+radius = 25.0
+height = 50.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_11f5f"]
 animations = [{
@@ -40,8 +40,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_meixb"]
 size = Vector2(100, 90)
 
-[node name="Gnome" type="CharacterBody2D"]
+[node name="Gnome" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_huuxy")
+accel = 80.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 17.185)
@@ -49,8 +50,8 @@ shape = SubResource("CapsuleShape2D_q4i4b")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
-position = Vector2(3, -12)
-scale = Vector2(0.25, 0.25)
+position = Vector2(3, -24)
+scale = Vector2(0.33, 0.33)
 sprite_frames = SubResource("SpriteFrames_11f5f")
 animation = &"walk"
 frame_progress = 0.287324

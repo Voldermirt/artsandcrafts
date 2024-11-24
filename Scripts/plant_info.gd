@@ -1,4 +1,5 @@
 extends Resource
+class_name PlantInfo
 
 @export var health: int
 @export var sprite: Texture2D
