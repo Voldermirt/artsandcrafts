@@ -8,6 +8,8 @@ signal water_updated(level)
 var max_water = 3
 var water = 3
 
+var selected_plant : Plant = null
+
 @onready
 var sprite : AnimatedSprite2D = $AnimatedSprite2D
 
@@ -16,10 +18,11 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
-		for body in $Marker2D/InteractArea.get_overlapping_bodies():
-			if body is Plant:
-				water_plant(body)
-				return
+		if selected_plant:
+			water_plant(selected_plant)
+			return
+	if event.is_action_pressed("gnome_speech"):
+		$WOO.play()
 
 func water_plant(plant : Plant) -> void:
 	if water >= 1:
@@ -56,10 +59,17 @@ func _physics_process(delta: float) -> void:
 		sprite.play("walk")
 		# Update interaction area
 		$Marker2D.rotation = ((2 * PI) + direction.angle())
-	
-	
-	
-	#else:
-		#velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+func interact_area_entered(body):
+	if body is Plant:
+		if selected_plant:
+			selected_plant.get_node("WateringCan").visible = false
+		selected_plant = body
+		selected_plant.get_node("WateringCan").visible = true
+
+func interact_area_exited(body):
+	if body is Plant and selected_plant:
+		selected_plant.get_node("WateringCan").visible = false
+		selected_plant = null
