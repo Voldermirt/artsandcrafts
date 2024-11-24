@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ivtnyyctvcsl"]
+[gd_scene load_steps=10 format=3 uid="uid://ivtnyyctvcsl"]
 
 [ext_resource type="Script" path="res://Scripts/gnome.gd" id="1_huuxy"]
 [ext_resource type="Texture2D" uid="uid://cjv1tsj0df6rt" path="res://Assets/gnome/gnome3.png" id="2_irbrp"]
@@ -41,6 +41,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_meixb"]
 size = Vector2(100, 90)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ayoin"]
+radius = 60.0
+
 [node name="Gnome" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_huuxy")
 accel = 80.0
@@ -63,8 +66,11 @@ position = Vector2(0, 17)
 [node name="InteractArea" type="Area2D" parent="Marker2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D/InteractArea"]
-position = Vector2(75, 0)
+position = Vector2(66, 0)
 shape = SubResource("RectangleShape2D_meixb")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Marker2D/InteractArea"]
+shape = SubResource("CircleShape2D_ayoin")
 
 [node name="WOO" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_mmafg")

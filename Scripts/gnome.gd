@@ -18,7 +18,7 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
-		if selected_plant:
+		if selected_plant and selected_plant.alive:
 			water_plant(selected_plant)
 			return
 	if event.is_action_pressed("gnome_speech"):
@@ -59,17 +59,44 @@ func _physics_process(delta: float) -> void:
 		sprite.play("walk")
 		# Update interaction area
 		$Marker2D.rotation = ((2 * PI) + direction.angle())
-
+	
+	select_plant()
 	move_and_slide()
 
-func interact_area_entered(body):
-	if body is Plant:
+func select_plant():
+	var prev_plant = selected_plant
+	var plant = null
+	var min_dist = 999999.0
+	for body in $Marker2D/InteractArea.get_overlapping_bodies():
+		if body is Plant:
+			# Select closest plant
+			var dist = $Marker2D/InteractArea.global_position.distance_to(body.global_position)
+			if dist < min_dist:
+				min_dist = dist
+				plant = body
+	selected_plant = plant	
+	if prev_plant != selected_plant:
+		# Selected plant changed
 		if selected_plant:
-			selected_plant.get_node("WateringCan").visible = false
-		selected_plant = body
-		selected_plant.get_node("WateringCan").visible = true
+			selected_plant.get_node("WateringCan").visible = true
+		if prev_plant:
+			prev_plant.get_node("WateringCan").visible = false
+	
 
-func interact_area_exited(body):
-	if body is Plant and selected_plant:
-		selected_plant.get_node("WateringCan").visible = false
-		selected_plant = null
+#func interact_area_entered(body):
+	#if body is Plant:
+		#if selected_plant:
+			#selected_plant.get_node("WateringCan").visible = false
+		#selected_plant = body
+		#selected_plant.get_node("WateringCan").visible = true
+#
+#func interact_area_exited(body):
+	#if body is Plant and selected_plant:
+		#selected_plant.get_node("WateringCan").visible = false
+		## See if there's another plant that can be targeted instead
+		#for b in $Marker2D/InteractArea.get_overlapping_bodies():
+			#if b is Plant:
+				#selected_plant = body
+				#selected_plant.get_node("WateringCan").visible = true
+				#return
+		#selected_plant = null

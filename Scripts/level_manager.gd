@@ -26,9 +26,9 @@ func _ready() -> void:
 	
 
 func update_water_ui(water_level):
-	ui.get_node("Control/drop3").visible = water_level >= 1
-	ui.get_node("Control/drop2").visible = water_level >= 2
-	ui.get_node("Control/drop1").visible = water_level >= 3
+	ui.get_node("drop1").visible = water_level >= 1
+	ui.get_node("drop2").visible = water_level >= 2
+	ui.get_node("drop3").visible = water_level >= 3
 
 func update_score(amount):
 	score += amount
