@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dyoqbx0jyxeb"]
+[gd_scene load_steps=19 format=3 uid="uid://dyoqbx0jyxeb"]
 
 [ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_g8mcg"]
 [ext_resource type="Texture2D" uid="uid://b070ach5lj7rd" path="res://Assets/sky.jpg" id="1_gmhot"]
@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://cr6odwef56nvy" path="res://Resources/light_pink.tres" id="5_kb6cs"]
 [ext_resource type="Resource" uid="uid://drswgupcle8te" path="res://Resources/pink1.tres" id="6_bnvxs"]
 [ext_resource type="Resource" uid="uid://ca2kbt62n1bs6" path="res://Resources/pink2.tres" id="7_gjc3i"]
+[ext_resource type="Texture2D" uid="uid://bxx5pinkemisa" path="res://Assets/fence.png" id="11_gf4pa"]
 [ext_resource type="Texture2D" uid="uid://c1qyd6121u0f0" path="res://Assets/water_drop.png" id="13_vcyg7"]
 
 [sub_resource type="SystemFont" id="SystemFont_7qaeo"]
@@ -37,12 +38,18 @@ modulate = Color(0.374427, 0.583672, 0.715534, 1)
 position = Vector2(598, 437)
 scale = Vector2(0.32209, 0.32209)
 texture = ExtResource("1_gmhot")
+metadata/_edit_lock_ = true
 
 [node name="Ground" type="Sprite2D" parent="."]
 modulate = Color(0.450418, 0.620346, 0.428991, 1)
-position = Vector2(577, 528)
-scale = Vector2(0.28852, 0.248347)
+position = Vector2(574, 336)
+scale = Vector2(0.297164, 0.255787)
 texture = ExtResource("2_u82ji")
+
+[node name="Fence" type="Sprite2D" parent="."]
+position = Vector2(602, 98)
+scale = Vector2(1.24, 0.89)
+texture = ExtResource("11_gf4pa")
 
 [node name="Gnome" parent="." instance=ExtResource("2_48ylr")]
 position = Vector2(592, 593)
@@ -61,6 +68,7 @@ anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [node name="Score" type="Label" parent="UI"]
 layout_mode = 1
@@ -171,10 +179,6 @@ shape = SubResource("RectangleShape2D_ss45j")
 [node name="StaticBody2D3" type="StaticBody2D" parent="Boundaries"]
 position = Vector2(0, 668)
 metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D3"]
-position = Vector2(-10, -344)
-shape = SubResource("RectangleShape2D_3hux7")
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="Boundaries"]
 position = Vector2(1172, 668)
