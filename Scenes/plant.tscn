@@ -1,27 +1,65 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcwdgoepfnx52"]
+[gd_scene load_steps=9 format=3 uid="uid://bcwdgoepfnx52"]
 
 [ext_resource type="Script" path="res://Scripts/plant.gd" id="1_3fwsr"]
 [ext_resource type="Resource" uid="uid://beh7okmkh1o0n" path="res://Resources/plant_info.tres" id="2_6x14g"]
 [ext_resource type="Texture2D" uid="uid://c002fnmxm3agh" path="res://icon.svg" id="3_7klb6"]
 
+[sub_resource type="Gradient" id="Gradient_6rcht"]
+offsets = PackedFloat32Array(0, 0.162791, 0.44186, 0.786822, 1)
+colors = PackedColorArray(0.960784, 0, 0, 1, 1, 0, 0, 1, 0.902855, 0.902856, 0, 1, 0.437497, 0.816961, 0, 1, 0, 1, 0, 1)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1yvjp"]
-size = Vector2(102, 100)
+size = Vector2(112, 111)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4fnqf"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lav5c"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iknvk"]
+bg_color = Color(1, 0, 0, 1)
 
 [node name="Plant" type="StaticBody2D"]
 script = ExtResource("1_3fwsr")
 stats = ExtResource("2_6x14g")
+gradient = SubResource("Gradient_6rcht")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1, -4)
-scale = Vector2(0.875, 0.8125)
+scale = Vector2(0.875, 0.875)
 texture = ExtResource("3_7klb6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_1yvjp")
 
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -44.0
+offset_top = -82.0
+offset_right = 43.0
+offset_bottom = -68.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4fnqf")
+
 [node name="ProgressBar" type="ProgressBar" parent="."]
-offset_left = -79.0
-offset_top = -96.0
-offset_right = 82.0
-offset_bottom = -69.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -41.58
+offset_top = -79.805
+offset_right = 41.42
+offset_bottom = -69.805
+grow_horizontal = 2
+theme_override_constants/outline_size = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_lav5c")
+theme_override_styles/fill = SubResource("StyleBoxFlat_iknvk")
 value = 100.0
+show_percentage = false
