@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ivtnyyctvcsl"]
+[gd_scene load_steps=12 format=3 uid="uid://ivtnyyctvcsl"]
 
 [ext_resource type="Script" path="res://Scripts/gnome.gd" id="1_huuxy"]
 [ext_resource type="Texture2D" uid="uid://cjv1tsj0df6rt" path="res://Assets/gnome/gnome3.png" id="2_irbrp"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c4u1w8w2thdl2" path="res://Assets/gnome/gnome2.png" id="4_w6krd"]
 [ext_resource type="AudioStream" uid="uid://c8s7wrihjyk4a" path="res://audio/woo_gnone_fast.wav" id="5_mc8ug"]
 [ext_resource type="AudioStream" uid="uid://bftbiar7p8xgb" path="res://audio/waterloop.wav" id="6_xi0hg"]
+[ext_resource type="AudioStream" uid="uid://ckke128vb4jcx" path="res://audio/footsteps_looped.wav" id="7_opnp3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q4i4b"]
 radius = 14.845
@@ -87,6 +88,10 @@ stream = ExtResource("5_mc8ug")
 stream = ExtResource("6_xi0hg")
 
 [node name="SoundStop" type="Timer" parent="WaterSound"]
+
+[node name="Footsteps" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_opnp3")
+pitch_scale = 1.5
 
 [connection signal="body_entered" from="Marker2D/InteractArea" to="." method="interact_area_entered"]
 [connection signal="body_exited" from="Marker2D/InteractArea" to="." method="interact_area_exited"]
