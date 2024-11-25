@@ -37,7 +37,7 @@ func _process(delta: float) -> void:
 		$Plant.z_index = 0
 
 func water():
-	var diff = max_health - health
+	var diff = float(max_health) - health
 	health = max_health
 	$ProgressBar.value = health
 	on_plant_watered.emit((diff / max_health) * 15)
