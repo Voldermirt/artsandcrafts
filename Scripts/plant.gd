@@ -40,7 +40,7 @@ func water():
 	var diff = max_health - health
 	health = max_health
 	$ProgressBar.value = health
-	on_plant_watered.emit(diff)
+	on_plant_watered.emit((diff / max_health) * 15)
 
 func die():
 	alive = false

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://brseh3d44c7pn" path="res://Assets/gnome/gnome1.png" id="3_h4lm2"]
 [ext_resource type="Texture2D" uid="uid://c4u1w8w2thdl2" path="res://Assets/gnome/gnome2.png" id="4_w6krd"]
 [ext_resource type="AudioStream" uid="uid://c8s7wrihjyk4a" path="res://audio/woo_gnone_fast.wav" id="5_mc8ug"]
-[ext_resource type="AudioStream" uid="uid://bftbiar7p8xgb" path="res://audio/waterloop.wav" id="6_xi0hg"]
+[ext_resource type="AudioStream" uid="uid://bhsw34srr5wvd" path="res://audio/waterloop_alt.wav" id="6_1vmns"]
 [ext_resource type="AudioStream" uid="uid://ckke128vb4jcx" path="res://audio/footsteps_looped.wav" id="7_opnp3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q4i4b"]
@@ -85,7 +85,7 @@ shape = SubResource("CircleShape2D_ayoin")
 stream = ExtResource("5_mc8ug")
 
 [node name="WaterSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_xi0hg")
+stream = ExtResource("6_1vmns")
 
 [node name="SoundStop" type="Timer" parent="WaterSound"]
 

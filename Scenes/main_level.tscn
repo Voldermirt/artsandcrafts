@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dyoqbx0jyxeb"]
+[gd_scene load_steps=23 format=3 uid="uid://dyoqbx0jyxeb"]
 
 [ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_g8mcg"]
 [ext_resource type="Script" path="res://Scripts/plant_info.gd" id="2_2yaj6"]
@@ -14,12 +14,16 @@
 [ext_resource type="Texture2D" uid="uid://dm2gihpmpk54e" path="res://Assets/ground.png" id="10_pfvlf"]
 [ext_resource type="Texture2D" uid="uid://bxx5pinkemisa" path="res://Assets/fence.png" id="11_gf4pa"]
 [ext_resource type="Texture2D" uid="uid://c4bdusrswv2bs" path="res://Assets/frame.png" id="12_cygcy"]
+[ext_resource type="Texture2D" uid="uid://b12436wgafbne" path="res://Assets/title.png" id="13_bal47"]
 [ext_resource type="Texture2D" uid="uid://c1qyd6121u0f0" path="res://Assets/water_drop.png" id="13_vcyg7"]
 
 [sub_resource type="SystemFont" id="SystemFont_7qaeo"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u75cl"]
 texture = ExtResource("12_cygcy")
+
+[sub_resource type="LabelSettings" id="LabelSettings_nqlgk"]
+font_size = 24
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ss45j"]
 size = Vector2(1152, 20)
@@ -37,7 +41,6 @@ plants = Array[ExtResource("2_2yaj6")]([ExtResource("3_6vh6c"), ExtResource("4_k
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_afshw")
 autoplay = true
-bus = &"Background Music"
 
 [node name="Ground" type="Sprite2D" parent="."]
 modulate = Color(0.450418, 0.620346, 0.428991, 1)
@@ -127,7 +130,6 @@ expand_mode = 5
 stretch_mode = 4
 
 [node name="HowToPlay" type="PanelContainer" parent="UI"]
-visible = false
 z_index = 3
 layout_mode = 1
 anchors_preset = 15
@@ -199,6 +201,30 @@ fit_content = true
 process_mode = 3
 layout_mode = 2
 text = "START"
+
+[node name="Control" type="Control" parent="UI/HowToPlay"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/HowToPlay/Control"]
+layout_mode = 2
+offset_left = -24.0
+offset_top = 209.0
+offset_right = 1128.0
+offset_bottom = 857.0
+rotation = -0.534071
+scale = Vector2(0.33, 0.33)
+mouse_filter = 2
+texture = ExtResource("13_bal47")
+
+[node name="Label" type="Label" parent="UI/HowToPlay/Control"]
+layout_mode = 2
+offset_left = 818.0
+offset_top = 548.0
+offset_right = 1970.0
+offset_bottom = 582.0
+text = "By Elliot, Yollaine, and Eric!"
+label_settings = SubResource("LabelSettings_nqlgk")
 
 [node name="EndScreen" type="PanelContainer" parent="UI"]
 visible = false
@@ -284,34 +310,34 @@ text = "QUIT"
 [node name="plants" type="Node2D" parent="."]
 
 [node name="Plant" parent="plants" instance=ExtResource("2_xn7s7")]
-position = Vector2(159, 247)
+position = Vector2(225, 204)
 
 [node name="Plant2" parent="plants" instance=ExtResource("2_xn7s7")]
-position = Vector2(316, 201)
+position = Vector2(383, 209)
 
 [node name="Plant3" parent="plants" instance=ExtResource("2_xn7s7")]
-position = Vector2(480, 246)
+position = Vector2(554, 227)
 
 [node name="Plant4" parent="plants" instance=ExtResource("2_xn7s7")]
-position = Vector2(661, 186)
+position = Vector2(682, 188)
 
 [node name="Plant5" parent="plants" instance=ExtResource("2_xn7s7")]
 position = Vector2(369, 515)
 
 [node name="Plant6" parent="plants" instance=ExtResource("2_xn7s7")]
-position = Vector2(499, 522)
+position = Vector2(539, 544)
 
 [node name="Plant7" parent="plants" instance=ExtResource("2_xn7s7")]
-position = Vector2(777, 257)
+position = Vector2(855, 230)
 
 [node name="Plant8" parent="plants" instance=ExtResource("2_xn7s7")]
-position = Vector2(603, 437)
+position = Vector2(663, 494)
 
 [node name="Plant9" parent="plants" instance=ExtResource("2_xn7s7")]
-position = Vector2(764, 511)
+position = Vector2(843, 518)
 
 [node name="Plant10" parent="plants" instance=ExtResource("2_xn7s7")]
-position = Vector2(943, 355)
+position = Vector2(950, 357)
 
 [node name="Boundaries" type="Node2D" parent="."]
 
@@ -349,7 +375,7 @@ shape = SubResource("RectangleShape2D_3hux7")
 
 [node name="Hose" parent="." instance=ExtResource("5_edj1w")]
 y_sort_enabled = true
-position = Vector2(135, 419)
+position = Vector2(187, 386)
 
 [node name="Gnome" parent="." instance=ExtResource("2_48ylr")]
 y_sort_enabled = true

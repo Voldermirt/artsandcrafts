@@ -82,8 +82,12 @@ func time_up():
 	score += 5 * plants_alive
 	score -= 10 * plants_dead
 	
+	var alive_bonus = 5 * plants_alive
+	if plants_dead == 0:
+		alive_bonus += 25
+	
 	# dynamically change the end screen text
-	end_plants_alive.text = "No. Of Plants Alive: " + str(plants_alive) + " | +" + str(5 * plants_alive)
+	end_plants_alive.text = "No. Of Plants Alive: " + str(plants_alive) + " | +" + str(alive_bonus)
 	end_plants_dead.text = "No. Of Plants Dead: " + str(plants_dead) + " | -" + str(10 * plants_dead)
 	end_total_score.text = "TOTAL SCORE: " + str(score)
 	if score < 0:
