@@ -58,8 +58,11 @@ func _physics_process(delta: float) -> void:
 	# Animations
 	if direction.x == 0 and direction.y == 0:
 		sprite.play("idle")
+		$Footsteps.stop()
 	else:
 		sprite.play("walk")
+		if not $Footsteps.playing:
+			$Footsteps.play()
 		# Update interaction area
 		$Marker2D.rotation = ((2 * PI) + direction.angle())
 	
