@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://bvheh4rb58pfh"]
+[gd_scene load_steps=16 format=3 uid="uid://bvheh4rb58pfh"]
 
 [ext_resource type="Script" path="res://Scripts/hose.gd" id="1_ighed"]
 [ext_resource type="Texture2D" uid="uid://cq5l5upf3qtis" path="res://Assets/faucet/faucet_droplet.png" id="2_lrh5n"]
 [ext_resource type="Texture2D" uid="uid://d21yl78ttywt2" path="res://Assets/concrete.png" id="2_xy0ix"]
 [ext_resource type="Texture2D" uid="uid://b2e5ir77i3x5s" path="res://Assets/faucet/faucet.png" id="3_s4lku"]
+[ext_resource type="AudioStream" uid="uid://bftbiar7p8xgb" path="res://audio/waterloop.wav" id="5_jl3q3"]
 
 [sub_resource type="Curve" id="Curve_4t1pp"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.886179, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.384615), 0.0, 0.0, 0, 0]
@@ -121,6 +122,9 @@ value = 1.0
 show_percentage = false
 
 [node name="HoseTimer" type="Timer" parent="."]
+
+[node name="FillSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_jl3q3")
 
 [connection signal="body_entered" from="Collection Area" to="." method="_on_collection_area_body_entered"]
 [connection signal="body_exited" from="Collection Area" to="." method="_on_collection_area_body_exited"]
