@@ -1,21 +1,20 @@
 extends Node
 
 
-
 var timer : Timer
 @onready
 var ui = $"%UI"
 
 @export var plants : Array[PlantInfo]
 
-@onready var start = $UI/HowToPlay/CenterContainer/PanelContainer/VBoxContainer/Start
+@onready var start = $"%HowToPlayParent".get_node("VBoxContainer/Start")
 @onready var how_to_play = $UI/HowToPlay
 
-@onready var end_screen = $UI/EndScreen
-@onready var end_plants_alive = $UI/EndScreen/CenterContainer/PanelContainer/PerformanceContainer/ScoreLabel
-@onready var end_plants_dead = $UI/EndScreen/CenterContainer/PanelContainer/PerformanceContainer/DeadLabel
-@onready var end_total_score = $UI/EndScreen/CenterContainer/PanelContainer/PerformanceContainer/TotalLabel
-@onready var end_message = $UI/EndScreen/CenterContainer/PanelContainer/PerformanceContainer/JudgementLabel
+#@onready var end_screen = $UI/EndScreen
+@onready var end_plants_alive = $"%EndScreenParent".get_node("ScoreLabel")
+@onready var end_plants_dead = $"%EndScreenParent".get_node("DeadLabel")
+@onready var end_total_score = $"%EndScreenParent".get_node("TotalLabel")
+@onready var end_message = $"%EndScreenParent".get_node("JudgementLabel")
 
 var score := 0
 
