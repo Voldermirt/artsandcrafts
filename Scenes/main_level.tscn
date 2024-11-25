@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dyoqbx0jyxeb"]
+[gd_scene load_steps=23 format=3 uid="uid://dyoqbx0jyxeb"]
 
 [ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_g8mcg"]
 [ext_resource type="Script" path="res://Scripts/plant_info.gd" id="2_2yaj6"]
@@ -22,6 +22,9 @@
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u75cl"]
 texture = ExtResource("12_cygcy")
 
+[sub_resource type="LabelSettings" id="LabelSettings_nqlgk"]
+font_size = 24
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ss45j"]
 size = Vector2(1152, 20)
 
@@ -38,7 +41,6 @@ plants = Array[ExtResource("2_2yaj6")]([ExtResource("3_6vh6c"), ExtResource("4_k
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_afshw")
 autoplay = true
-bus = &"Background Music"
 
 [node name="Ground" type="Sprite2D" parent="."]
 modulate = Color(0.450418, 0.620346, 0.428991, 1)
@@ -128,7 +130,6 @@ expand_mode = 5
 stretch_mode = 4
 
 [node name="HowToPlay" type="PanelContainer" parent="UI"]
-visible = false
 z_index = 3
 layout_mode = 1
 anchors_preset = 15
@@ -215,6 +216,15 @@ rotation = -0.534071
 scale = Vector2(0.33, 0.33)
 mouse_filter = 2
 texture = ExtResource("13_bal47")
+
+[node name="Label" type="Label" parent="UI/HowToPlay/Control"]
+layout_mode = 2
+offset_left = 818.0
+offset_top = 548.0
+offset_right = 1970.0
+offset_bottom = 582.0
+text = "By Elliot, Yollaine, and Eric!"
+label_settings = SubResource("LabelSettings_nqlgk")
 
 [node name="EndScreen" type="PanelContainer" parent="UI"]
 visible = false
