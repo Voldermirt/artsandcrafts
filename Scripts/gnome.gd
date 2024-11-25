@@ -29,6 +29,9 @@ func water_plant(plant : Plant) -> void:
 		water -= 1
 		water_updated.emit(water)
 		plant.water()
+		
+		$WaterSound.play()
+		$WaterSound/SoundStop.start()
 
 # add amount to water level
 func fill_water(amount):
